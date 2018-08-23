@@ -35,7 +35,7 @@ from timesketch.lib.datastores.elastic import ElasticsearchDataStore
 from timesketch.lib.utils import read_and_validate_csv
 from timesketch.lib.utils import read_and_validate_redline
 from timesketch.lib.utils import read_and_validate_jsonl
-from timesketch.lib.experimental.similarity import SimilarityScorer
+# from timesketch.lib.experimental.similarity import SimilarityScorer
 from timesketch.models import db_session
 from timesketch.models import drop_all
 from timesketch.models.user import Group
@@ -520,6 +520,7 @@ class PurgeTimeline(Command):
             es.client.indices.delete(index=index_name)
 
 
+"""
 class SimilarityScore(Command):
     """Calculate similarity between events with same data_type."""
     option_list = (
@@ -542,6 +543,7 @@ class SimilarityScore(Command):
         scorer = SimilarityScorer(index=index_name, data_type=data_type)
         result = scorer.run()
         sys.stdout.write(u'{0}'.format(result))
+"""
 
 
 class SearchTemplateManager(Command):
@@ -631,7 +633,7 @@ if __name__ == '__main__':
     shell_manager.add_command(u'json2ts', CreateTimelineFromJson())
     shell_manager.add_command(u'purge', PurgeTimeline())
     shell_manager.add_command(u'search_template', SearchTemplateManager())
-    shell_manager.add_command(u'similarity_score', SimilarityScore())
+    # shell_manager.add_command(u'similarity_score', SimilarityScore())
     shell_manager.add_command(u'runserver',
                               Server(host=u'127.0.0.1', port=5000))
     shell_manager.add_option(

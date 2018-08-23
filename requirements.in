@@ -17,7 +17,7 @@ python-dateutil
 gunicorn
 pycypher
 parameterized
-datasketch
+# datasketch
 PyJWT
 requests
 cryptography
